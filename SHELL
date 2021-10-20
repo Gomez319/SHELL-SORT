@@ -1,0 +1,513 @@
+// Ordenamientos.cpp 
+//Tipos de ordenamientos con enteros y caracteres utilizando memoria dinamica
+//By Norochii
+//Estructura de Datos
+ 
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "time.h"
+ 
+using namespace std;
+ 
+class ordenamientos
+{
+	private:
+		int j,i,temp,x;
+		int *listaEnteros;
+		char *listaCaracteres;
+	public:
+		ordenamientos();
+		~ordenamientos();
+		void ordenamientoBurbuja();
+		void ordenamientoInsercion();
+		void ordenamientoShell();
+ 
+};
+ 
+ordenamientos::ordenamientos()
+{	
+		i=0;
+		j=0;
+		temp=0;
+		x=0;
+}
+ 
+ordenamientos::~ordenamientos()
+{}
+ 
+void ordenamientos::ordenamientoBurbuja()
+{
+ 
+	int opc;
+	cout<<"                                 Metodo Burbuja "<<'\n'<<endl;
+	cout<<"                               Que deseas Ordenar"<<endl;
+	cout<<"                                   1.- Numeros"<<endl;
+	cout<<"                                   2.- Letras"<<endl;
+	cout<<"                                    Opcion: ";
+	cin>>opc;
+	system("cls");
+	switch(opc)
+	{
+ 
+		case 1:
+			cout<<"                     Introduzca el numero de elementos a insertar "<<endl;
+ 
+			cout<<"                               Numeros de Elementos: ";
+ 
+			cin>>x;
+ 
+			listaEnteros= new(nothrow) int[x];
+ 
+			system("cls");
+ 
+			cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+ 
+			for(i=0; i<x; i++)
+			{
+ 
+				cin>>listaEnteros[i];
+			}
+ 
+			for(i=0;i<x-1;i++)
+			{
+ 
+				for(j=i+1;j<x;j++)
+				{
+ 
+					if(listaEnteros[i]>listaEnteros[j])
+						{
+							temp=listaEnteros[i];
+ 
+							listaEnteros[i]=listaEnteros[j];
+ 
+							listaEnteros[j]=temp;
+						}
+				}
+ 
+			}
+ 
+ 
+			system("cls");
+ 
+			cout<<"Elementos Ordenados :"<<endl;
+ 
+				for(i=0; i<x; i++)
+				{
+ 
+					cout<<endl;
+ 
+					cout<<"Elemento "<< i+1<<": " <<listaEnteros[i]<<endl;;
+				}
+ 
+					delete[] listaEnteros;
+ 
+					break;
+		case 2:
+ 
+				cout<<"            Introduzca el numero de elementos a insertar "<<endl;
+ 
+				cout<<"                    Numeros de Elementos: ";
+ 
+				cin>>x;
+ 
+				listaCaracteres= new(nothrow) char[x];
+ 
+				system("cls");
+ 
+				cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+				for(i=0; i<x; i++)
+				{
+ 
+					cin>>listaCaracteres[i];
+				}
+ 
+				for(i=0;i<x-1;i++)
+				{
+ 
+					for(j=i+1;j<x;j++)
+					{
+						if(listaCaracteres[i]>listaCaracteres[j])
+							{
+								temp=listaCaracteres[i];
+ 
+								listaCaracteres[i]=listaCaracteres[j];
+ 
+								listaCaracteres[j]=temp;
+							}
+					}
+ 
+				}
+ 
+ 
+		system("cls");
+ 
+			cout<<"Elementos Ordenados :"<<endl;
+ 
+			for(i=0; i<x; i++)
+			{
+ 
+				cout<<endl;
+ 
+				cout<<"Elemento "<< i+1<<": " <<listaCaracteres[i]<<endl;
+			}
+ 
+				delete[] listaCaracteres;
+ 
+				break;	
+ 
+	}			
+}
+ 
+void ordenamientos::ordenamientoInsercion()
+{
+	int opc;
+ 
+	cout<<"                              Metodo Por Insercion "<<'\n'<<endl;
+ 
+	cout<<"                            Que deseas Ordenar"<<endl;
+ 
+	cout<<"                               1.- Numeros"<<endl;
+ 
+	cout<<"                               2.- Letras"<<endl;
+ 
+	cout<<"                                Opcion: ";
+ 
+	cin>>opc;
+ 
+	system("cls");
+ 
+	switch(opc)
+	{
+ 
+		case 1:
+ 
+			cout<<"            Introduzca el numero de elementos a insertar "<<endl;
+ 
+			cout<<"                    Numeros de Elementos: ";
+ 
+			cin>>x;
+ 
+			listaEnteros= new(nothrow) int[x];
+ 
+			system("cls");
+ 
+			cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+			for(i=0; i<x; i++)
+			{
+ 
+				cin>>listaEnteros[i];
+			}
+ 
+			for (i = 1; i < x; i++)
+			{
+ 
+				temp = listaEnteros[i];
+ 
+				j = i - 1;
+ 
+					while ( (listaEnteros[j] > temp) && (j >= 0) )
+					{
+ 
+						listaEnteros[j + 1] = listaEnteros[j];
+ 
+						j--;
+ 
+						listaEnteros[j + 1] = temp;
+					}
+ 
+ 
+		}
+			system("cls");
+ 
+			cout<<"Elementos Ordenados :"<<endl;
+ 
+			for(j=0; j<x; j++)
+			{
+ 
+				cout<<endl;
+ 
+				cout<<"Elemento "<< j+1<<": " <<listaEnteros[j]<<endl;;
+			}	
+ 
+				delete[] listaEnteros;
+ 
+			break;
+ 
+ 
+		case 2:
+ 
+				cout<<"            Introduzca el numero de elementos a insertar "<<endl;
+ 
+				cout<<"                    Numeros de Elementos: ";
+ 
+				cin>>x;
+ 
+				listaCaracteres= new(nothrow) char[x];
+ 
+				system("cls");
+ 
+				cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+				for(i=0; i<x; i++)
+				{
+ 
+					cin>>listaCaracteres[i];
+				}
+ 
+				for(i=0;i<x-1;i++)
+				{
+ 
+					for(j=i+1;j<x;j++)
+					{
+ 
+						if(listaCaracteres[i]>listaCaracteres[j])
+						{
+ 
+							temp=listaCaracteres[i];
+ 
+							listaCaracteres[i]=listaCaracteres[j];
+ 
+							listaCaracteres[j]=temp;
+ 
+						}
+ 
+					}
+ 
+ 
+				}
+ 
+ 
+ 
+		system("cls");
+ 
+		cout<<"Elementos Ordenados :"<<endl;
+ 
+		for(j=0; j<x; j++)
+		{
+ 
+			cout<<endl;
+ 
+			cout<<"Elemento "<< j+1<<": " <<listaCaracteres[j]<<endl;;
+		}
+ 
+			delete[] listaCaracteres;
+			break;
+ 
+	}
+}
+ 
+void ordenamientos::ordenamientoShell()
+{
+	int inter,x,n=0,i=0,j=0,k=0,temp;
+	int opc;
+ 
+ 
+	cout<<"                              Metodo de Shell "<<'\n'<<endl;
+ 
+	cout<<"                            Que deseas Ordenar"<<endl;
+ 
+	cout<<"                               1.- Numeros"<<endl;
+ 
+	cout<<"                               2.- Letras"<<endl;
+ 
+	cout<<"                                Opcion: ";
+ 
+	cin>>opc;
+ 
+	system("cls");
+ 
+	switch(opc)
+	{
+		case 1:
+ 
+				cout<<"            Introduzca el numero de elementos a insertar "<<endl;
+ 
+				cout<<"                    Numeros de Elementos: ";
+ 
+				cin>>x;
+ 
+				inter = x/2;
+ 
+				listaEnteros= new(nothrow) int[x];
+ 
+				system("cls");
+ 
+				cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+				for(i=0; i<x; i++)
+				{
+ 
+					cin>>listaEnteros[i];
+				}
+ 
+ 
+					while(inter>0)
+					{
+ 
+						for(i=inter;i<x;i++)
+						{
+ 
+							n++;
+ 
+							j=i-inter;
+ 
+								while(j>=0)
+								{
+ 
+									k=j+inter;
+ 
+									if(listaEnteros[j]<=listaEnteros[k])
+									{
+										j--;
+									}
+ 
+									else
+									{
+ 
+										temp=listaEnteros[j];
+ 
+										listaEnteros[j]=listaEnteros[k];
+ 
+										listaEnteros[k]=temp;
+ 
+										j=j-inter;
+									}
+ 
+							}
+ 
+				}inter = inter/2;
+			}	
+ 
+ 
+			system("cls");
+ 
+			cout<<"Elementos Ordenados :"<<endl;
+ 
+				for(j=0; j<x; j++)
+				{
+ 
+					cout<<endl;
+ 
+					cout<<"Elemento "<< j+1<<": " <<listaEnteros[j]<<endl;;
+ 
+				}
+ 
+				delete[] listaEnteros;
+ 
+				break;
+ 
+		case 2:
+ 
+				cout<<"            Introduzca el numero de elementos a insertar "<<endl;
+ 
+				cout<<"                    Numeros de Elementos: ";
+ 
+				cin>>x;
+ 
+				inter = x/2;
+ 
+				listaCaracteres= new(nothrow) char[x];
+ 
+				system("cls");
+ 
+				cout<<"Introduzca los elementos de la lista"<<endl;
+ 
+				for(i=0; i<x; i++)
+				{
+ 
+					cin>>listaCaracteres[i];
+				}
+ 
+				while(inter>0)
+					{
+ 
+						for(i=inter;i<x;i++)
+						{
+ 
+							n++;
+ 
+							j=i-inter;
+ 
+								while(j>=0)
+								{
+ 
+									k=j+inter;
+ 
+									if(listaCaracteres[j]<=listaCaracteres[k])
+									{
+										j--;
+									}
+ 
+									else
+									{
+ 
+										temp=listaCaracteres[j];
+ 
+										listaCaracteres[j]=listaCaracteres[k];
+ 
+										listaCaracteres[k]=temp;
+ 
+										j=j-inter;
+									}
+ 
+							}
+ 
+				}inter = inter/2;
+			}	
+ 
+ 
+			system("cls");
+ 
+			cout<<"Elementos Ordenados :"<<endl;
+ 
+				for(j=0; j<x; j++)
+				{
+ 
+					cout<<endl;
+ 
+					cout<<"Elemento "<< j+1<<": " <<listaCaracteres[j]<<endl;;
+ 
+				}
+ 
+				delete[] listaCaracteres;
+ 
+				break;
+ 
+}
+}
+ 
+void  main()
+{
+	int inicio,fin,tiempo,opcion;
+	inicio=clock();
+	ordenamientos O;
+	cout<<"			Selecciones el Metodo de Ordenamiento: "<<endl;
+	cout<<'\n'<<"                                  1.- Metodo Burbuja "<<endl;
+	cout<<"                                2.- Metodo de Insercion "<<endl;
+	cout<<"                                 3.- Metodo de Shell "<<endl;
+	cout<<"                                     Metodo Numero: ";
+	cin>>opcion;
+	system("cls");
+	switch(opcion)
+	{
+		case 1:
+				O.ordenamientoBurbuja();
+		break;
+		case 2:
+				O.ordenamientoInsercion();
+		break;
+		case 3:
+			O.ordenamientoShell();
+		break;
+ 
+        fin = clock();
+	tiempo = fin-inicio;
+	cout<<'\n'<<"Tiempo de Ejecucion: "<<tiempo<<" Milisegundos"<<endl;
+	system("PAUSE");
+ 
+}
+}
